@@ -10,7 +10,3 @@ Mobile App using Cordova and Phaser.IO
 5. and run `npm install`
 6. run command `cordova run browser` at terminal to test run app at browser or
 7. run command `cordova run android` at terminal to build android apk
-
-
-##Contribute
-[wimpykatana](https://github.com/wimpykatana)
