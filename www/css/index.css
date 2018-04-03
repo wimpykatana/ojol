@@ -57,7 +57,16 @@ img { width:100%; }
     /*overflow: hidden;*/
     /*margin: 0 auto;*/
 }
+
+.fullPage{
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: -1;
 }
+
 
 .center-margin-auto{
     margin: 0 auto !important;
