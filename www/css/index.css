@@ -43,6 +43,7 @@ img { width:100%; }
 /* ======================================================================================================
    LAYOUT
    ====================================================================================================== */
+.app-berhasil,
 .app{
     display: block;
     height: 100%;
@@ -57,6 +58,12 @@ img { width:100%; }
     /*overflow: hidden;*/
     /*margin: 0 auto;*/
 }
+
+.app-berhasil{
+    background: url("../img/bg-berhasil.png");
+    background-size: cover;
+}
+
 
 .fullPage{
     height: 100%;
@@ -128,6 +135,27 @@ h1.splash-screen-title{
     display: none !important;
 }
 
+.ribbon-mantap{
+    background: url("../img/mantap.png");
+    display: block;
+    width: 295px;
+    height: 82px;
+    margin: 25px auto 15px;
+}
+
+.object-acive{
+    max-width: 80%;
+    margin: auto;
+}
+
+.text-acive{
+    width: 200px;
+    padding: 10px;
+    background-color: #fff;
+    margin: 30px auto 0;
+    text-align: center;
+}
+
 /*- SCNENE satu
 /*****************************************************************************/
 .ojol-object{
@@ -175,6 +203,19 @@ canvas{
     width: 300px;
     text-align: center;
     font-size: 28px;
+}
+
+#puzzle{
+    background: url("../img/hengpon.png");
+    background-size: cover;
+}
+
+.ketuk-container{
+    display: block;
+    width: 85px;
+    position: absolute;
+    top: 23%;
+    left: 42%;
 }
 
 
