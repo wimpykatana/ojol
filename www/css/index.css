@@ -156,6 +156,14 @@ h1.splash-screen-title{
     text-align: center;
 }
 
+.logo{
+    margin-top: -15%;
+}
+
+.logo > img{
+    width: 85%;
+}
+
 /*- SCNENE satu
 /*****************************************************************************/
 .ojol-object{
@@ -208,6 +216,7 @@ canvas{
 #puzzle{
     background: url("../img/hengpon.png");
     background-size: cover;
+    display: block;
 }
 
 .ketuk-container{
