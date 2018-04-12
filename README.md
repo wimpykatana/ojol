@@ -12,5 +12,5 @@ Mobile App using Cordova and Phaser.IO
 7. run command `cordova emulate android` at terminal to build android apk
 
 ## Feature
-this app have slider puzzle and click based game
-this app have a acclemeter
+1. this app have slider puzzle and click based game
+2. this app have a acclemeter
