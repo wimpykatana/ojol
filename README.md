@@ -13,3 +13,4 @@ Mobile App using Cordova and Phaser.IO
 
 ## Feature
 this app have slider puzzle and click based game
+this app have a acclemeter
