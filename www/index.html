@@ -1,62 +1,89 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body class="noscroll">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <style>
+        body {
+            margin: 0px;
+        }
+        #footerTable {
+            width: 100%;
+        }
+        footer {
+            position:absolute;
+            bottom:0;
+            width:100%;
+            height:40px;
+            background:#ccc;
+        }
+    </style>
+    <!--<script type="text/javascript" src="phonegap.js"></script>-->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+        var watch = 0;
 
-                    <div class="app">
+        window.onload = function()
+        {
+            //init();
+            document.addEventListener("deviceready", init, false);
+        }
+
+        function init()
+        {
+            var iW = window.innerWidth;
+            var iH = window.innerHeight;
+            canvas= document.getElementById('myCanvas');
+            cnv = canvas.getContext("2d");
+            cnv.canvas.width = iW;
+            cnv.canvas.height = iH-40;
+            target = new Image();
+            target.src = "crosshair.png";
+            xPos = (iW-target.width)/2;
+            yPos = (iH-target.height)/2;
+            target.onload = function()
+            {
+                cnv.drawImage(target, xPos, yPos);
+            }
+
+            watch = navigator.accelerometer.watchAcceleration(success, failure, {frequency: 100});
+
+        }
+
+        function success(acceleration)
+        {
 
 
-                        <div id="demo" class="fullPage logo d-flex justify-content-center align-items-center">
-                            <!--<img src="img/logoojol.png">-->
-                        </div>
+            document.getElementById("xOut").innerHTML = Math.round(acceleration.x);
+            document.getElementById("yOut").innerHTML = Math.round(acceleration.y);
+            document.getElementById("zOut").innerHTML = Math.round(acceleration.z);
 
-                        <div id="accx"></div>
-                        <div id="accy"></div>
-                        <div id="accz"></div>
+            cnv.clearRect(0, 0, canvas.width, canvas.height);
+            xPos += -1*(acceleration.x * 1.5);
+            yPos += (acceleration.y * 1.5);
+            cnv.drawImage(target, xPos, yPos);
 
+        }
 
-                        <div class="bottom-container">
-                            <a class="btn btn-ojol center-margin-auto" href="satu.html">Mulai</a>
-                        </div>
-                    </div>
+        function failure()
+        {
+            alert("Error");
+        }
+    </script>
+    <title>Hello World</title>
+</head>
+<body>
+<canvas id="myCanvas" ></canvas>
+<footer>
+    <table id="footerTable">
+        <tr>
+            <td>X: <span id="xOut">0</span></td>
+            <td>Y: <span id="yOut">0</span></td>
+            <td>Z: <span id="zOut">0</span></td>
+        </tr>
+    </table>
+</footer>
 
-
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/acclemoter.js"></script>
-    </body>
+</body>
 </html>
