@@ -1,4 +1,3 @@
-# OJOL (Ojek Online)
 Mobile App using Cordova and Phaser.IO
 
 ## How To use
